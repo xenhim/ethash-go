@@ -1,4 +1,6 @@
 # ethash1.1-go
+[![Build and Test](https://github.com/mineruniter969/ethash1.1-go/actions/workflows/go.yml/badge.svg)](https://github.com/mineruniter969/ethash1.1-go/actions/workflows/go.yml)
+
 Ethash1.1 implementation in the Go Programming Language
 
 
