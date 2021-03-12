@@ -52,7 +52,7 @@ func (h *Hasher) Verify(number uint64, sealHash []byte, mixDigest []byte, nonce 
 	cache := h.getCache(epoch)
 
 	mixDigestComputed, powHash := HashimotoLight(CalcDatasetSize(epoch), cache, sealHash, nonce)
-	if bytes.Equal(mixDigest, mixDigestComputed) {
+	if !bytes.Equal(mixDigest, mixDigestComputed) {
 		// invalid mix digest
 		return fmt.Errorf("invalid mix digest")
 	}
