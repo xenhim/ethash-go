@@ -32,12 +32,12 @@ func clear0x(s string) string {
 func searcherThread(dataset []uint32, sealHash []byte, difficulty *big.Int, start uint64) {
 	nonce := start
 	for {
-		_, powHash := ethash.HashimotoFull(dataset, sealHash, nonce)
+		mixDigest, powHash := ethash.HashimotoFull(dataset, sealHash, nonce)
 		computedDifficulty := new(big.Int).Div(new(big.Int).Exp(big.NewInt(2), big.NewInt(256), big.NewInt(0)), new(big.Int).SetBytes(powHash))
 		if computedDifficulty.Cmp(difficulty) >= 0 {
 			sol := make([]byte, 8)
 			new(big.Int).SetUint64(nonce).FillBytes(sol)
-			fmt.Println("solution", hexutil.Encode(sol), "difficulty", computedDifficulty, "powhash", hex.EncodeToString(powHash))
+			fmt.Println("solution", hexutil.Encode(sol), "difficulty", computedDifficulty, "powhash", hex.EncodeToString(powHash), "mixdigest", hex.EncodeToString(mixDigest))
 		}
 		nonce++
 	}
