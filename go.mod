@@ -1,6 +1,6 @@
-module github.com/mineruniter969/ethash1.1-go
+module github.com/xenhim/ethash-go
 
-go 1.16
+go 1.14
 
 require (
 	github.com/ethereum/go-ethereum v1.10.1
